@@ -33,8 +33,7 @@ import ugit
 try:
     cause=machine.reset_cause()
     print("reset_cause", cause)
-    ugit.pull_all(isconnected=True)
-    if cause==machine.WDT_RESET:
+    if cause==machine.WDT_RESET or cause==machine.PWRON_RESET:
         ugit.pull_all(isconnected=True)
     micropython.kbd_intr(ord('q')) # allow an interrupt before launching app
     for i in range(5):
