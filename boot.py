@@ -39,8 +39,8 @@ try:
             break
         time.sleep(1)
     if cause==machine.WDT_RESET or cause==machine.HARD_RESET or cause==machine.DEEPSLEEP_RESET:
-        pass
-        #ugit.pull_all(isconnected=True)
+        #pass
+        ugit.pull_all(isconnected=True)
     micropython.kbd_intr(ord('q')) # allow an interrupt before launching app
     for i in range(5):
         print("waiting", (5-i), "secs")

@@ -99,7 +99,7 @@ def main(event):
     except OSError as e:
         raise e
     print("deep sleeping")
-    deep_sleep(10000)
+    deep_sleep(1000)
  
 main(0)
 #RTC().wakeup(10000, main)
