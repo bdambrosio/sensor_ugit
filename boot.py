@@ -21,11 +21,11 @@ while station.isconnected() == False:
         time.sleep(4)
         if uart.any() > 0: break
     except KeyboardInterrupt:
-        machine.reset()
+        machine.soft_reset()
         pass
     except Exception as e:
         print(e)
-        machine.reset()
+        machine.soft_reset()
 
 print(station.ifconfig())
 import ugit
@@ -35,7 +35,7 @@ try:
     for i in range(8):
         print("waiting", (8-i), "secs")
         if uart.any() > 0:
-            machine.reset()
+            machine.soft_reset()
             break
         time.sleep(1)
     if cause==machine.WDT_RESET or cause==machine.HARD_RESET or cause==machine.DEEPSLEEP_RESET:
@@ -45,11 +45,11 @@ try:
     for i in range(5):
         print("waiting", (5-i), "secs")
         if uart.any() > 0:
-            machine.reset()
+            machine.soft_reset()
             break
         time.sleep(1)
     import sht30_D1_WifiloggerV2
 except KeyboardInterrupt:
-    machine.reset()
+    machine.soft_reset()
 
 
