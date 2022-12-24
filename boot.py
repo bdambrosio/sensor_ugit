@@ -13,7 +13,6 @@ micropython.kbd_intr(ord('q')) # allow an interrupt before launching app
 station = network.WLAN(network.STA_IF)
 station.active(True)
 
-
 while station.isconnected() == False:
     print ("connecting...")
     try:

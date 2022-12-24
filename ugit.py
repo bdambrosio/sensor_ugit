@@ -37,7 +37,7 @@ call_trees_url = f'https://api.github.com/repos/{user}/{repository}/git/trees/ma
 raw = f'https://raw.githubusercontent.com/{user}/{repository}/master/'
 
 def pull(f_path,raw_url):
-  print(f'pulling {f_path} from github')
+  #print(f'pulling {f_path} from github')
   #files = os.listdir()
   r = urequests.get(raw_url)
   try:
@@ -58,8 +58,8 @@ def pull_all(tree=call_trees_url,raw = raw,ignore = ignore,isconnected=False):
   tree = pull_git_tree()
   internal_tree = build_internal_tree()
   internal_tree = remove_ignore(internal_tree)
-  print(' ignore removed ----------------------')
-  print(internal_tree)
+  #print(' ignore removed ----------------------')
+  #print(internal_tree)
   log = []
   # download and save all files
   for i in tree['tree']:
@@ -83,7 +83,7 @@ def pull_all(tree=call_trees_url,raw = raw,ignore = ignore,isconnected=False):
         log.append(i['path'] + ' failed to pull')
   # delete files not in Github tree
   if len(internal_tree) > 0:
-      print(internal_tree, ' leftover!')
+      #print(internal_tree, ' leftover!')
       for i in internal_tree:
           os.remove(i)
           log.append(i + ' removed from int mem')
@@ -96,18 +96,18 @@ def pull_all(tree=call_trees_url,raw = raw,ignore = ignore,isconnected=False):
   #return check instead return with global
 
 def wificonnect(ssid=ssid,password=password):
-    print('Use: like ugit.wificonnect(SSID,Password)')
-    print('otherwise uses ssid,password in top of ugit.py code')
+    #print('Use: like ugit.wificonnect(SSID,Password)')
+    #print('otherwise uses ssid,password in top of ugit.py code')
     wlan = network.WLAN(network.STA_IF)
     wlan.active(False)
     wlan.active(True)
     wlan.connect(ssid,password)
     while not wlan.isconnected():
         pass
-    print('Wifi Connected!!')
-    print(f'SSID: {ssid}')
-    print('Local Ip Address, Subnet Mask, Default Gateway, Listening on...')
-    print(wlan.ifconfig())
+    #print('Wifi Connected!!')
+    #print(f'SSID: {ssid}')
+    #print('Local Ip Address, Subnet Mask, Default Gateway, Listening on...')
+    #print(wlan.ifconfig())
     return wlan
   
 def build_internal_tree():
@@ -126,20 +126,20 @@ def add_to_tree(dir_item):
       add_to_tree(i)
     os.chdir('..')
   else:
-    print(dir_item)
+    #print(dir_item)
     if os.getcwd() != '/':
       subfile_path = os.getcwd() + '/' + dir_item
     else:
       subfile_path = os.getcwd() + dir_item
     try:
-      print(f'sub_path: {subfile_path}')
+      #print(f'sub_path: {subfile_path}')
       internal_tree.append([subfile_path,get_hash(subfile_path)])
     except OSError:
       print(f'{dir_item} could not be added to tree')
 
 
 def get_hash(file):
-  print(file)
+  #print(file)
   o_file = open(file)
   r_file = o_file.read()
   sha1obj = hashlib.sha1(r_file)
@@ -175,8 +175,8 @@ def parse_git_tree():
       dirs.append(i['path'])
     if i['type'] == 'blob':
       files.append([i['path'],i['sha'],i['mode']])
-  print('dirs:',dirs)
-  print('files:',files)
+  #print('dirs:',dirs)
+  #print('files:',files)
    
    
 def check_ignore(tree=call_trees_url,raw = raw,ignore = ignore):
