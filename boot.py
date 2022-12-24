@@ -3,6 +3,8 @@ import network
 import time
 import micropython
 import secret
+import machine
+
 from machine import UART
 uart=UART(0,115200)
 
@@ -27,9 +29,13 @@ while station.isconnected() == False:
         machine.reset()
 
 print(station.ifconfig())
+import ugit
 try:
-    import ugit
+    cause=machine.reset_cause()
+    print("reset_cause", cause)
     ugit.pull_all(isconnected=True)
+    if cause==machine.WDT_RESET:
+        ugit.pull_all(isconnected=True)
     micropython.kbd_intr(ord('q')) # allow an interrupt before launching app
     for i in range(5):
         print("waiting", (5-i), "secs")

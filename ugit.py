@@ -14,7 +14,6 @@ import time
 import network
 import secret
 global internal_tree
-import binascii
 
 #### -------------User Variables----------------####
 #### 
@@ -27,7 +26,7 @@ password=secret.password
 
 # Don't remove ugit.py from the ignore_files unless you know what you are doing :D
 # Put the files you don't want deleted or updated here use '/filename.ext'
-ignore_files = ['/ugit.py', '/secret.py', '/boot.py', '/lib/urequests.py']
+ignore_files = ['/ugit.py', '/secret.py', '/boot.py', '/lib/urequest/py']
 ignore = ignore_files
 ### -----------END OF USER VARIABLES ----------####
 
@@ -145,14 +144,14 @@ def get_hash(file):
   r_file = o_file.read()
   sha1obj = hashlib.sha1(r_file)
   hash = sha1obj.digest()
-  #return(hash.hex())
-  return binascii.hexlify(hash).decode()
+  return(hash.hex())
+  #return binascii.hexlify(hash).decode()
 
 def get_data_hash(data):
     sha1obj = hashlib.sha1(data)
     hash = sha1obj.digest()
-    #return(hash.hex())
-    return binascii.hexlify(hash).decode()
+    return(hash.hex())
+    #return binascii.hexlify(hash).decode()
   
 def is_directory(file):
   directory = False
