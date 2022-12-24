@@ -27,7 +27,7 @@ password=secret.password
 
 # Don't remove ugit.py from the ignore_files unless you know what you are doing :D
 # Put the files you don't want deleted or updated here use '/filename.ext'
-ignore_files = ['/ugit.py', '/secret.py', '/boot.py', '/lib/urequest/py']
+ignore_files = ['/ugit.py', '/secret.py', '/boot.py', '/lib/urequests.py']
 ignore = ignore_files
 ### -----------END OF USER VARIABLES ----------####
 
