@@ -29,7 +29,7 @@ while station.isconnected() == False:
 print(station.ifconfig())
 try:
     import ugit
-    ugit.pull_all(connected=True)
+    ugit.pull_all(isconnected=True)
     micropython.kbd_intr(ord('q')) # allow an interrupt before launching app
     for i in range(5):
         print("waiting", (5-i), "secs")
