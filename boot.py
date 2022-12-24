@@ -42,7 +42,7 @@ try:
             machine.reset()
             break
         time.sleep(1)
-    import sht30_D1Mini_Wifilogger
+    import sht30_D1_WifiloggerV2
 except KeyboardInterrupt:
     machine.reset()
 
