@@ -33,8 +33,15 @@ import ugit
 try:
     cause=machine.reset_cause()
     print("reset_cause", cause)
+    for i in range(5):
+        print("waiting", (5-i), "secs")
+        if uart.any() > 0:
+            machine.reset()
+            break
+        time.sleep(1)
     if cause==machine.WDT_RESET or cause==machine.PWRON_RESET or cause==machine.DEEPSLEEP_RESET:
-        ugit.pull_all(isconnected=True)
+        pass
+        #ugit.pull_all(isconnected=True)
     micropython.kbd_intr(ord('q')) # allow an interrupt before launching app
     for i in range(5):
         print("waiting", (5-i), "secs")
